@@ -1,13 +1,10 @@
 package com.mongo.test;
 
 
-import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-
-import static com.mongodb.client.model.Filters.*;
 
 /**
  * Created by Administrator on 2016/11/30.
@@ -65,12 +62,35 @@ public class Connect {
         //System.out.println(myDoc.toJson());
 
 
-        Block<Document> printBlock = new Block<Document>() {
-            public void apply(final Document document) {
-                System.out.println(document.toJson());
-            }
-        };
-        collection.find(gt("i", 50)).forEach(printBlock);
-        collection.find(and(gt("i", 50), lte("i", 100))).forEach(printBlock);
+        //多条件查询
+        //Block<Document> printBlock = new Block<Document>() {
+        //    public void apply(final Document document) {
+        //        System.out.println(document.toJson());
+        //    }
+        //};
+        //collection.find(or(eq("i", 50), eq("i", 90))).forEach(printBlock);
+
+        //更新
+        //collection.updateOne(eq("i", 10), new Document("$set", new Document("i", 110)));
+
+        //批量更新
+        //UpdateResult updateResult = collection.updateMany(lt("i", 100), inc("i", 100));
+        //System.out.println(updateResult.getModifiedCount());
+
+        //批量更新
+        //UpdateResult updateResult = collection.updateMany(lt("i", 100), new Document("$inc", new Document("i", 100)));
+        //System.out.println(updateResult.getModifiedCount());
+
+
+        //删除一个符合条件的数据（）
+        //collection.deleteOne(eq("i", 110));
+
+        //批量删除
+        //DeleteResult deleteResult = collection.deleteMany(gte("i", 100));
+        //System.out.println(deleteResult.getDeletedCount());
+
+
+
+
     }
 }
